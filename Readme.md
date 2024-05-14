@@ -38,7 +38,8 @@ TCP port 22 to SSH into our instances remotely
 ```
 
 Iniciamos el Swarm en la máquina máster
-```
+
+```console
 $ docker swarm init
 
 Swarm initialized: current node (sqab0b4s7an7rbnxfujwqzsjq) is now a manager.
@@ -53,7 +54,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 Unimos al Swarm los otros dos nodos como workers
 
-```
+```console
 $ docker swarm join --token SWMTKN-2-2755s1w5d5ssynkmlz1qvrorw6lox4p5f0ibjgp4mh1p038t6d-ax1xe0bdhal9pg8a8zbkvf736 10.132.0.10:2377
 
 This node joined a swarm as a worker.
@@ -62,8 +63,8 @@ This node joined a swarm as a worker.
 
 Ver el estado del Swarm:
 
-```
-$ docker node ls
+```console
+docker node ls
 ```
 
 ## Construir la imagen de la aplicación a partir del Dockerfile
@@ -73,8 +74,8 @@ La aplicación y el resto de ficheros para esta guía están disponible en un re
 Para clonarlo ejecuta el siguiente comando en la máquina master:
 
 
-```
-$ git clone https://github.com/MII-CC-2024/docker_lab3_docker-swarm.git
+```console
+git clone https://github.com/MII-CC-2024/docker_lab3_docker-swarm.git
 ```
 
 
@@ -340,8 +341,8 @@ CMD ["node", "index.js"]
 
 Ahora puedes crear la imagen con el comando: 
 
-```
-$ docker build -t <username>/<dockerimage> .
+```console
+docker build -t <username>/<dockerimage> .
 ```
 
 Donde <username> debe ser sustituido por tu usuario en Docker Hub y <dockerimage> por el nombre
@@ -349,22 +350,22 @@ que se dará a la imagen. Por ejemplo, jluisalvarez/node-webapp
 
 y subir la imagen al Docker Hub. Para ello, identificate y luego sube la imagen.
 
-```js
-$ docker login
+```console
+docker login
 ```
 
-```js
-$ docker push <username>/<dockerimage>
+```console
+docker push <username>/<dockerimage>
 ```
 
 
 ## Docker Compose
 
-El fichero doker-compose.yml tiene definidos 3 servicios, una red para conectarlos y un volumen para persistir los datos
+El fichero compose.yml tiene definidos 3 servicios, una red para conectarlos y un volumen para persistir los datos
 de MongoDB.
 
 ```yaml
-name: webapp
+
 services:
   web:
     image: <username>/<dockerimage>
@@ -417,8 +418,8 @@ networks:
 
 Podrás desplegar los servicios ejecutando el siguiente comando:
 
-```shell
-$ docker stack deploy -c docker-compose.yml webapp
+```console
+docker stack deploy -c compose.yml webapp
 ```
 
 Puedes acceder al vizualizer con: http://<ip_master>:8080
@@ -426,23 +427,24 @@ Puedes acceder a la aplicación con: http://<ip_master>
 
 ## Mostrar listado de servicios y contenedores
 
-```shell
-$ docker service ls
+```console
+docker service ls
 ```
 
-```shell
-$ docker stack ps webapp
+```console
+docker stack ps webapp
 ```
 
 ## Escalar servicios
 
+```console
 docker service scale webapp_web=4
-
+```
 
 ## Eliminar servicios
 
-```shell
-$ docker stack rm webapp
+```console
+docker stack rm webapp
 ```
 
 ## Comandos Swarm

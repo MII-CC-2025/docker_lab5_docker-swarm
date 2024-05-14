@@ -1,11 +1,11 @@
 name: webapp
 services:
   web:
-    image: bookmarks
+    image: username/image:tag
     depends_on:
       - mongo
     deploy:
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
       resources:
@@ -13,7 +13,7 @@ services:
           cpus: "0.1"
           memory: 50M
     ports:
-      - "8081:8080"
+      - "80:8080"
     networks:
       - webnet
 
