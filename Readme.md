@@ -1,4 +1,4 @@
-# Lab 3. Desplegar App Contenerizada en un Clúster Swarm
+# Lab 5. Desplegar App Contenerizada en un Clúster Swarm
 
 En esta guía vamos a desplegar una Aplicación desarrollada con Nodejs que utiliza una base de datos
 NoSQL MongoDB en un clúster Swarm. Para monitorizar los contenedores usaremos la aplicación contenerizada visualizer.
@@ -75,7 +75,7 @@ Para clonarlo ejecuta el siguiente comando en la máquina master:
 
 
 ```console
-git clone https://github.com/MII-CC-2024/docker_lab3_docker-swarm.git
+git clone https://github.com/MII-CC-2025/docker_lab5_docker-swarm.git
 ```
 
 
