@@ -7,7 +7,7 @@ NoSQL MongoDB en un clúster Swarm. Para monitorizar los contenedores usaremos l
 ## Crear el clúster Swarm
 https://docs.docker.com/engine/swarm/swarm-tutorial/
 
-Crear 3 máquinas virtuales, una de ellas la denominaremos: master y las otras dos: worker1 y worker2.
+Crear 3 máquinas virtuales (ubuntu), asignarle un grupo de seguridad (sgswarm) y las denominaremos master, worker1 y worker2.
 
 Instalamos docker en cada una de ellas. Aquí tienes un script para incluir como datos de usuario al crearla.
 
@@ -26,7 +26,7 @@ apt-get install -y docker-ce
 usermod -aG docker ubuntu
 ```
 
-Añade las siguientes reglas de firewall:
+Añade, al grupo de seguridad sgswarm, las siguientes reglas de firewall:
 
 ```
 
