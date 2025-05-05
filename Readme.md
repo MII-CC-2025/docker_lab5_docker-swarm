@@ -419,7 +419,7 @@ networks:
 Podrás desplegar los servicios ejecutando el siguiente comando:
 
 ```console
-docker stack deploy -c compose.yml webapp
+docker stack deploy -c compose.yaml webapp
 ```
 
 Puedes acceder al vizualizer con: http://<ip_master>:8080
