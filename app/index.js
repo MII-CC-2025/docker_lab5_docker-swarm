@@ -69,6 +69,7 @@ webRouter.post('/create', async (req, res) => {
     const l = new Link(
         {
             _id: new mongoose.Types.ObjectId(),
+            //_id: new mongoose.mongo.ObjectId(),
             author: req.body.author,
             url: req.body.url,
             description: req.body.description,
@@ -87,12 +88,12 @@ webRouter.post('/create', async (req, res) => {
     }
 });
 
-webRouter.get('/delete/:id', async(req, res) => {
+webRouter.get('/delete/:_id', async(req, res) => {
 
-    const link = await Link.findOneAndDelete(req.params.id)
+    const link = await Link.findByIdAndDelete(req.params._id)
     if (link) {
         res.send('Deleted successfully! - <a href="/">Volver</a>');
-        console.log('Link: ' + req.params.id + ' deleted successfully');
+        console.log('Link: ' + req.params._id + ' deleted successfully');
     } else {
         res.send('<p>ERROR: Link Not Deleted</p><a href="">Volver</a>');
     }
